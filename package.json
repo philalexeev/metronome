@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "rollup-plugin-uglify": "^6.0.1",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-long-click": "^0.0.4"
   }
 }

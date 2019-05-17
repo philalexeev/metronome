@@ -9610,7 +9610,14 @@ void-elements@^2.0.1:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
-vue@^2.6.10:
+vue-long-click@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/vue-long-click/-/vue-long-click-0.0.4.tgz#8679652a3c7183258a9558c1394e7d35ad4be63d"
+  integrity sha512-1/8KMsON6k8ebGqOhBZKU69EWlTLv4+LUluwUxTMNYno9t7ztk8j6rNVwewbp9hULktEoe+jBnxMFBngsPQCaQ==
+  dependencies:
+    vue "^2.5.22"
+
+vue@^2.5.22, vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==

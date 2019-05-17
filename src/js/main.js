@@ -1,9 +1,13 @@
 import Vue from 'vue/dist/vue'
+import { longClickDirective } from 'vue-long-click'
+
+const longClickInstance = longClickDirective({delay: 400, interval: 50})
+Vue.directive('longclick', longClickInstance)
 
 let app = new Vue({
 	el: '.app',
 	data: {
-		temp: 80,
+		temp: 120,
 		onAir: false,
 		btnName: 'play',
 		timerId: 0
@@ -14,11 +18,11 @@ let app = new Vue({
 		}
 	},
 	methods: {
-		faster() {
-			this.temp++;
+		faster(n) {
+			this.temp += n;
 		},
-		slower() {
-			this.temp--;
+		slower(n) {
+			this.temp -= n;
 		},
 		btnClick() {
 			let audio = new Audio();

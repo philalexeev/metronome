@@ -2,11 +2,19 @@ h1 Metronome
 .app
 	.app__inner
 		.temp
-			button.temp__btn.temp__slower(@click='slower')
+			button.temp__btn.temp__slower(
+				@click.shift='slower(9)',
+				@click='slower(1)',
+				v-longclick="() => temp--"
+			)
 				svg.temp__btn-icon
 					use(xlink:href='#icon-minus')
 			span.temp__current {{ temp }}
-			button.temp__btn.temp__faster(@click='faster')
+			button.temp__btn.temp__faster(
+				@click.shift='faster(9)',
+				@click='faster(1)',
+				v-longclick="() => temp++"
+			)
 				svg.temp__btn-icon
 					use(xlink:href='#icon-plus')
 		button.play(@click='btnClick') {{ btnName }}
