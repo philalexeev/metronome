@@ -1,0 +1,11 @@
+<!doctype html>
+html(lang="ru")
+	include blocks/head/head.pug
+
+	body
+		.sprite(style='display:none')
+			include img/svgsprite.svg
+
+		include blocks/app/app.pug
+
+		script(src='js/main.js')

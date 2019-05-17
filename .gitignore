@@ -1,0 +1,17 @@
+build/
+
+package-lock.json
+.Saved/
+_arc/
+bower_components/
+node_modules/
+.DS_Store
+*.log
+*.sublime-*
+*.rar
+*.txt
+*.zip
+.idea
+css/*.css
+ex_files
+Thumbs.db

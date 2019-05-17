@@ -1,0 +1,54 @@
+.app
+	display flex
+	justify-content center
+	align-items center
+	width 50%
+	height 50%
+	border 3px solid #ccc
+	border-radius 30px
+	background-color #fff
+
+.app__inner
+	display flex
+	flex-direction column
+	justify-content space-between
+
+.temp
+	display flex
+	justify-content center
+	align-items center
+	margin-bottom 30px
+	font-size 0
+
+.temp__btn
+	position relative
+	min-width 100px
+	padding 10px
+	border none
+	background-color lightgreen
+	font-size 20px
+	cursor pointer
+	transition all 0.2s ease-in
+
+	&:hover
+		background-color darken(lightgreen, 20%)
+
+.temp__btn-icon
+	width 20px
+	height 20px
+
+.temp__current
+	margin 0 30px
+	font-size 30px
+
+.play
+	position relative
+	padding 5px 20px
+	font-size 30px
+	border none
+	background-color orange
+	transition all 0.2s ease-in
+	cursor pointer
+
+	&:hover
+		background-color darken(orange, 10%)

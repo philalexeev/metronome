@@ -1,0 +1,12 @@
+h1 Metronome
+.app
+	.app__inner
+		.temp
+			button.temp__btn.temp__slower(@click='slower')
+				svg.temp__btn-icon
+					use(xlink:href='#icon-minus')
+			span.temp__current {{ temp }}
+			button.temp__btn.temp__faster(@click='faster')
+				svg.temp__btn-icon
+					use(xlink:href='#icon-plus')
+		button.play(@click='btnClick') {{ btnName }}
