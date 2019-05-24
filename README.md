@@ -7,3 +7,4 @@
 - toggle upbeat
 - triples
 - notes lengths
+- rhythm settings
