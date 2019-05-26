@@ -1,8 +1,9 @@
-h1 Metronome
+h1 metronome
 .app
-	.app__inner
+	.app__controls
 		.temp
 			button.temp__btn.temp__slower(
+				ref='slower',
 				@click.shift='slower(9)',
 				@click='slower(1)',
 				v-longclick="() => temp--"
@@ -18,3 +19,31 @@ h1 Metronome
 				svg.temp__btn-icon
 					use(xlink:href='#icon-plus')
 		button.play(@click='btnClick') {{ btnName }}
+	.app__settings
+		.timing
+			.timing__beats-wrapper.timing__wrapper
+				button.timing__btn.timing__beats-increase(
+					@click='increaseBeats'
+				)
+					svg.timing__btn-icon
+						use(xlink:href='#icon-plus')
+				span.timing__number.timing__beats {{ beats }}
+				button.timing__btn.timing__beats-decrease(
+					@click='decreaseBeats'
+				)
+					svg.timing__btn-icon
+						use(xlink:href='#icon-minus')
+			span.timing__slash /
+			.timing__length-wrapper.timing__wrapper
+				button.timing__btn.timing__length-increase(
+					@click='increaseNoteLength'
+				)
+					svg.timing__btn-icon
+						use(xlink:href='#icon-plus')
+				span.timing__number.timing__length {{ noteLength }}
+				button.timing__btn.timing__length-increase(
+					@click='decreaseNoteLength'
+				)
+					svg.timing__btn-icon
+						use(xlink:href='#icon-minus')
+p.tips hold SHIFT to change tempo by 10

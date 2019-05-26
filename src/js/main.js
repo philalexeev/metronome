@@ -8,9 +8,15 @@ let app = new Vue({
 	el: '.app',
 	data: {
 		temp: 120,
+		beats: 4,
+		noteLength: 4,
 		onAir: false,
 		btnName: 'play',
-		timerId: 0
+		timerId: 0,
+		audioHi: new Audio('../misc/click_hi.ogg'),
+		audioLow: new Audio('../misc/click_low.ogg'),
+		iteration: 0,
+		emphasis: true
 	},
 	computed: {
 		tempTime: function () {
@@ -20,26 +26,69 @@ let app = new Vue({
 	methods: {
 		faster(n) {
 			this.temp += n;
+			this.checkTempo();
 		},
 		slower(n) {
 			this.temp -= n;
+			this.checkTempo();
+		},
+		checkTempo() {
+			if (this.temp === 1) {
+				this.$refs.slower.disabled = true;
+			} else {
+				this.$refs.slower.disabled = false;
+			}
+		},
+		stopSound() {
+			this.audioHi.pause();
+			this.audioHi.currentTime = 0.0;
+			this.audioLow.pause();
+			this.audioLow.currentTime = 0.0;
+		},
+		playTempo() {
+			if ( this.emphasis ) {
+				this.stopSound();
+				this.audioHi.play();
+				this.iteration++;
+			}
+			this.timerId = setInterval(() => {
+				if ( this.emphasis && this.iteration === 0) {
+					this.stopSound();
+					this.audioHi.play();
+					this.iteration++;
+				} else {
+					this.stopSound();
+					this.audioLow.play();
+					if ( this.emphasis ) {
+						this.iteration === 3 ? this.iteration = 0 : this.iteration++;
+					} else {
+						this.iteration === 4 ? this.iteration = 0 : this.iteration++;
+					}
+				}
+			}, this.tempTime)
 		},
 		btnClick() {
-			let audio = new Audio();
 			if (this.onAir === false) {
 				this.onAir = true;
 				this.btnName = 'stop';
-				audio.src = '../misc/click.ogg';
-				audio.play();
-				this.timerId = setInterval(() => {
-					audio.play();
-				}, this.tempTime);
+				this.playTempo();
 			} else {
 				this.onAir = false;
 				this.btnName = 'play';
-				audio.pause();
 				clearInterval(this.timerId);
 			}
-		}
+		},
+		increaseBeats() {
+			this.beats++;
+		},
+		decreaseBeats() {
+			this.beats === 1 ? this.beats = 1 : this.beats--;
+		},
+		increaseNoteLength() {
+			this.noteLength *= 2;
+		},
+		decreaseNoteLength() {
+			this.noteLength === 1 ? this.noteLength = 1 : this.noteLength /= 2;
+		},
 	}
 })

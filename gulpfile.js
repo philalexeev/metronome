@@ -12,8 +12,7 @@ const newer = require('gulp-newer');
 const browserSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps');
 
-const webpackStream = require('webpack-stream');
-const webpack = webpackStream.webpack;
+const webpack = require('webpack-stream');
 const named = require('vinyl-named');
 const path = require('path');
 const gulplog = require('gulplog');
@@ -60,52 +59,17 @@ gulp.task('styles', function () {
 });
 
 // webpack
-gulp.task('webpack', function(callback) {
-
-	let firstBuildRady = false;
-
-	function done(err, stats) {
-		firstBuildRady = true;
-
-		if (err) {
-			return;
-		}
-
-		gulplog[stats.hasErrors() ? 'error' : 'info'](stats.toString({
-			colors: true
-		}));
-	}
-
-	let options = {
-		output: {
-			publicPath: '/js/'
-		},
-		watch: isDev,
-		mode: 'none',
-		devtool: isDev ? 'cheap-module-inline-source-map' : false,
-		module: {
-			rules: [{
-				test: /\.js$/,
-				include: path.join(__dirname, 'src'),
-				loader: 'babel-loader?presets[]=@babel/preset-env'
-			}]
-		},
-		plugins: [
-			new webpack.NoEmitOnErrorsPlugin()
-		]
-	};
-
-	return gulp.src('src/js/main.js')
-		.pipe(plumber())
-		.pipe(named())
-		.pipe(webpackStream(options, null, done))
-		.pipe(gulpIf(!isDev, uglify()))
-		.pipe(gulp.dest('build/js'))
-		.on('data', function() {
-			if (firstBuildRady) {
-				callback();
+gulp.task('webpack', () => {
+  return gulp.src('src/js/main.js')
+    .pipe(webpack({
+      mode: 'development',
+			entry: './src/js/main.js',
+			output: {
+				path: path.resolve(__dirname, 'build/js'),
+				filename: 'main.js'
 			}
-		});
+    }))
+    .pipe(gulp.dest('build/js/'));
 });
 
 // IMAGE MIN
