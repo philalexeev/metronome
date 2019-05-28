@@ -52,7 +52,10 @@ let app = new Vue({
 				this.iteration++;
 			}
 			this.timerId = setInterval(() => {
-				if ( this.emphasis && this.iteration === 0) {
+				if ( this.beats === 1 ) {
+					this.stopSound();
+					this.audioHi.play();
+				} else if ( this.emphasis && this.iteration === 0) {
 					this.stopSound();
 					this.audioHi.play();
 					this.iteration++;
@@ -60,9 +63,9 @@ let app = new Vue({
 					this.stopSound();
 					this.audioLow.play();
 					if ( this.emphasis ) {
-						this.iteration === 3 ? this.iteration = 0 : this.iteration++;
+						this.iteration === this.beats - 1 ? this.iteration = 0 : this.iteration++;
 					} else {
-						this.iteration === 4 ? this.iteration = 0 : this.iteration++;
+						this.iteration === this.beats ? this.iteration = 0 : this.iteration++;
 					}
 				}
 			}, this.tempTime)

@@ -67,7 +67,22 @@ gulp.task('webpack', () => {
 			output: {
 				path: path.resolve(__dirname, 'build/js'),
 				filename: 'main.js'
-			}
+			},
+			module: {
+				rules: [
+					{
+						test: /\.m?js$/,
+						exclude: /(node_modules|bower_components)/,
+						use: {
+							loader: 'babel-loader',
+							options: {
+								presets: ['@babel/preset-env']
+							}
+						}
+					}
+				]
+			},
+			devtool: 'inline-cheap-module-source-map'
     }))
     .pipe(gulp.dest('build/js/'));
 });
