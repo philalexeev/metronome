@@ -19,7 +19,6 @@ h1 metronome
 				svg.temp__btn-icon
 					use(xlink:href='#icon-plus')
 		button.play(@click='btnClick') {{ btnName }}
-		p.tips this iteration: {{ iteration }}
 	.app__settings
 		.timing
 			.timing__beats-wrapper.timing__wrapper
@@ -49,6 +48,6 @@ h1 metronome
 						use(xlink:href='#icon-minus')
 		.emphasis
 			.emphasis__inner
-				input(type="checkbox" id="emphasis" v-model='emphasis' checked)
-				label(for="emphasis") First beat emphasis
+				input.emphasis__checkbox.visuallyhidden(type="checkbox" id="emphasis" v-model='emphasis' checked)
+				label.emphasis__label(for="emphasis") First beat emphasis
 p.tips hold SHIFT to change tempo by 10

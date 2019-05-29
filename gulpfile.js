@@ -13,10 +13,7 @@ const browserSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps');
 
 const webpack = require('webpack-stream');
-const named = require('vinyl-named');
 const path = require('path');
-const gulplog = require('gulplog');
-const uglify = require('gulp-uglify');
 
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');

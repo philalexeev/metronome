@@ -12,7 +12,7 @@
 .app__controls
 	display flex
 	flex-direction column
-	justify-content space-between
+	justify-content flex-start
 	padding-right 50px
 	border-right 1px solid #ccc
 
@@ -44,10 +44,10 @@
 
 .temp__current
 	width 100px
-	height 50px
 	margin 0 30px
 	font-size 40px
 	font-weight 700
+	line-height 50px
 	text-align center
 	border none
 
@@ -102,8 +102,46 @@
 	padding-left 0
 	text-align center
 
+// Emphasis
 
+.emphasis__label
+	position relative
+	padding-left 70px
+	line-height 30px
+	cursor pointer
 
+.emphasis__label::before
+	content ''
+	position absolute
+	top 50%
+	left 0
+	transform translateY(-50%)
+	display block
+	width 52px
+	height 30px
+	border 2px solid #000
+	border-radius 30px
+	transition all 0.15s ease-in
+
+.emphasis__label::after
+	content ''
+	position absolute
+	top 50%
+	left 4px
+	transform translateY(-50%)
+	display block
+	width 22px
+	height 22px
+	border-radius 50%
+	background-color #000
+	transition all 0.15s ease-in
+
+.emphasis__checkbox:checked + .emphasis__label::before
+	background-color #000
+
+.emphasis__checkbox:checked + .emphasis__label::after
+	transform translate(22px, -50%)
+	background-color #fff
 
 .tips
 	color #777

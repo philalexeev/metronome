@@ -50,11 +50,18 @@ let app = new Vue({
 				this.stopSound();
 				this.audioHi.play();
 				this.iteration++;
+			} else {
+				this.stopSound();
+				this.audioLow.play();
+				this.iteration++;
 			}
 			this.timerId = setInterval(() => {
-				if ( this.beats === 1 ) {
+				if ( this.beats === 1 && this.emphasis ) {
 					this.stopSound();
 					this.audioHi.play();
+				} else if ( this.beats === 1 && !this.emphasis ) {
+					this.stopSound();
+					this.audioLow.play();
 				} else if ( this.emphasis && this.iteration === 0) {
 					this.stopSound();
 					this.audioHi.play();
@@ -62,13 +69,9 @@ let app = new Vue({
 				} else {
 					this.stopSound();
 					this.audioLow.play();
-					if ( this.emphasis ) {
-						this.iteration === this.beats - 1 ? this.iteration = 0 : this.iteration++;
-					} else {
-						this.iteration === this.beats ? this.iteration = 0 : this.iteration++;
-					}
+					this.iteration === this.beats - 1 ? this.iteration = 0 : this.iteration++;
 				}
-			}, this.tempTime)
+			}, this.tempTime * ( 4 / this.noteLength ) )
 		},
 		btnClick() {
 			if (this.onAir === false) {
