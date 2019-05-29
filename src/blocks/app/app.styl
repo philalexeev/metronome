@@ -62,11 +62,14 @@
 
 // Settings
 
+.app__settings
+	padding-left 50px
+
 .timing
 	display flex
 	justify-content center
 	align-items center
-	padding-left 25px
+	margin-bottom 20px
 
 .timing__wrapper
 	display flex
@@ -74,17 +77,12 @@
 	justify-content center
 	align-items center
 
-	&:hover .timing__btn,
-	&:focus-within .timing__btn
-		opacity 1
-
 .timing__btn
 	width 30px
 	height 20px
 	line-height 20px
 	border none
 	background-color transparent
-	opacity 0
 	transition opacity 0.2s ease-in
 	cursor pointer
 
@@ -99,14 +97,10 @@
 	user-select none
 
 .timing__number
-	width 120px
-	padding 10px 25px
+	width 80px
+	padding 10px 0
+	padding-left 0
 	text-align center
-
-.timing__slash
-	// margin 0 25px
-
-
 
 
 

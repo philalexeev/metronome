@@ -79,6 +79,7 @@ let app = new Vue({
 				this.onAir = false;
 				this.btnName = 'play';
 				clearInterval(this.timerId);
+				this.iteration = 0;
 			}
 		},
 		increaseBeats() {
