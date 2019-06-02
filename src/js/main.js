@@ -4,7 +4,7 @@ import { longClickDirective } from 'vue-long-click'
 const longClickInstance = longClickDirective({delay: 400, interval: 50})
 Vue.directive('longclick', longClickInstance)
 
-let app = new Vue({
+new Vue({
 	el: '.app',
 	data: {
 		temp: 120,
@@ -16,11 +16,15 @@ let app = new Vue({
 		audioHi: new Audio('../misc/click_hi.ogg'),
 		audioLow: new Audio('../misc/click_low.ogg'),
 		iteration: 0,
-		emphasis: true
+		emphasis: true,
+		triplets: false
 	},
 	computed: {
-		tempTime: function () {
+		tempTime() {
 			return ( 60 / this.temp ) * 1000
+		},
+		tripletsNumber() {
+			return this.triplets === true ? 3 : 1;
 		}
 	},
 	methods: {
@@ -46,6 +50,8 @@ let app = new Vue({
 			this.audioLow.currentTime = 0.0;
 		},
 		playTempo() {
+			let clickCount;
+			this.triplets === true ? clickCount = 3 : clickCount = this.beats;
 			if ( this.emphasis ) {
 				this.stopSound();
 				this.audioHi.play();
@@ -56,10 +62,10 @@ let app = new Vue({
 				this.iteration++;
 			}
 			this.timerId = setInterval(() => {
-				if ( this.beats === 1 && this.emphasis ) {
+				if ( clickCount === 1 && this.emphasis ) {
 					this.stopSound();
 					this.audioHi.play();
-				} else if ( this.beats === 1 && !this.emphasis ) {
+				} else if ( clickCount === 1 && !this.emphasis ) {
 					this.stopSound();
 					this.audioLow.play();
 				} else if ( this.emphasis && this.iteration === 0) {
@@ -69,9 +75,9 @@ let app = new Vue({
 				} else {
 					this.stopSound();
 					this.audioLow.play();
-					this.iteration === this.beats - 1 ? this.iteration = 0 : this.iteration++;
+					this.iteration === clickCount - 1 ? this.iteration = 0 : this.iteration++;
 				}
-			}, this.tempTime * ( 4 / this.noteLength ) )
+			}, ( this.tempTime / ( this.noteLength / 4 ) / this.tripletsNumber ) )
 		},
 		btnClick() {
 			if (this.onAir === false) {

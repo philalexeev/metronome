@@ -2,6 +2,7 @@
 	display flex
 	justify-content center
 	align-items top
+	flex-wrap wrap
 	padding 50px
 	margin-bottom 10px
 	border 1px solid #ccc
@@ -102,15 +103,19 @@
 	padding-left 0
 	text-align center
 
-// Emphasis
+// Checkboxs
 
-.emphasis__label
+.checkbox__wrapper + .checkbox__wrapper
+	margin-top 10px
+
+
+.label
 	position relative
 	padding-left 70px
 	line-height 30px
 	cursor pointer
 
-.emphasis__label::before
+.label::before
 	content ''
 	position absolute
 	top 50%
@@ -123,7 +128,7 @@
 	border-radius 30px
 	transition all 0.15s ease-in
 
-.emphasis__label::after
+.label::after
 	content ''
 	position absolute
 	top 50%
@@ -136,12 +141,15 @@
 	background-color #000
 	transition all 0.15s ease-in
 
-.emphasis__checkbox:checked + .emphasis__label::before
+.checkbox:checked + .label::before
 	background-color #000
 
-.emphasis__checkbox:checked + .emphasis__label::after
+.checkbox:checked + .label::after
 	transform translate(22px, -50%)
 	background-color #fff
+
+
+
 
 .tips
 	color #777

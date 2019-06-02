@@ -46,8 +46,12 @@ h1 metronome
 				)
 					svg.timing__btn-icon
 						use(xlink:href='#icon-minus')
-		.emphasis
+		.triplets.checkbox__wrapper
+			.triplets__inner
+				input.checkbox.triplets__checkbox.visuallyhidden(type="checkbox" id="triplets" v-model='triplets' checked)
+				label.label.triplets__label(for="triplets") Triplets
+		.emphasis.checkbox__wrapper
 			.emphasis__inner
-				input.emphasis__checkbox.visuallyhidden(type="checkbox" id="emphasis" v-model='emphasis' checked)
-				label.emphasis__label(for="emphasis") First beat emphasis
+				input.checkbox.emphasis__checkbox.visuallyhidden(type="checkbox" id="emphasis" v-model='emphasis' checked)
+				label.label.emphasis__label(for="emphasis") First beat emphasis
 p.tips hold SHIFT to change tempo by 10
