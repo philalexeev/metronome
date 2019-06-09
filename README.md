@@ -1,6 +1,7 @@
 для иван андеича
 
-yarn install
+yarn install \\\\\\
+
 yarn run dev
 
 
