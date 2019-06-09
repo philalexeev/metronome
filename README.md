@@ -1,8 +1,7 @@
-для иван андеича
+для иван андреича
 
-yarn install \\\\\\
-
-yarn run dev
+yarn install // зависимости, вся хуйня  
+yarn run dev // live server, live reload, авто сборка, вся хуйня  
 
 
 # metronome
