@@ -37,7 +37,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-webp": "^3.0.0",
     "gulplog": "^1.0.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.13.1",
     "path": "^0.12.7",
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.3.0",
